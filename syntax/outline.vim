@@ -12,17 +12,13 @@ syn match outlineSection     "^[A-Z].*$"
 " Syntax: TODO
 syn keyword outlineTodo BUG DEPRECATED FIXME IMPORTANT TODO
 
-" Syntax: question bullet point
-syn region outlineQuestion   start=+? + end=+\v\n\n@=|\n([A-Z])@=|(^\s*- )@=|(^\s*\* )@=|(^\s*! )@=|(^\s*x )@=+ contains=outlineTodo
-
-" Syntax: important bullet point
-syn region outlineImportant  start=+! + end=+\v\n\n@=|\n([A-Z])@=|(^\s*- )@=|(^\s*\* )@=|(^\s*\? )@=|(^\s*x )@=+ contains=outlineTodo
-
-" Syntax: invalid bullet point
-syn region outlineInvalid    start=+x + end=+\v\n\n@=|\n([A-Z])@=|(^\s*- )@=|(^\s*\* )@=|(^\s*\? )@=|(^\s*! )@=+ contains=outlineTodo
+" Syntax: bullet points
+syn region outlineQuestion start=+? + end=+\v\n\n@=|\n([A-Z])@=|(^\s*[-x!\*] )@=+ contains=outlineTodo
+syn region outlineImportant start=+! + end=+\v\n\n@=|\n([A-Z])@=|(^\s*[-\*\?x] )@=+ contains=outlineTodo
+syn region outlineInvalid start=+x + end=+\v\n\n@=|\n([A-Z])@=|(^\s*[-\*\?!] )@=+ contains=outlineTodo
 
 " Syntax: comment
-syn region  outlineLineComment    start=+##+ end=+$+ keepend contains=outlineTodo
+syn region  outlineLineComment start=+##+ end=+$+ keepend contains=outlineTodo
 
 " Define the default highlighting.
 hi def link outlineString String
