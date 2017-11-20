@@ -20,8 +20,7 @@ syn region outlineInvalid start=+x + end=+\v\n\n@=|\n([A-Z])@=|(^\s*[-\*\?!] )@=
 " comment
 syn region outlineLineComment start=+##+ end=+$+ keepend contains=outlineTodo
 
-" URI
-" see: https://gist.github.com/tobym/584909
+" URI (see: https://gist.github.com/tobym/584909)
 syn match outlineURI "\([A-Za-z][A-Za-z0-9\+\.\-]*\)\?:\/\/\(\w\+\(:\w\+\)\?@\)\?\([A-Za-z][-_0-9A-Za-z]*\.\)\{1,}\(\w\{2,}\.\?\)\{1,}\(:[0-9]\{1,5}\)\?\S*"
 syn match outlineURI "\v//[A-za-z0-9\-_/\.#]*"
 syn match outlineURI "\v/[A-za-z0-9\-_/\.#]+"
