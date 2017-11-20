@@ -10,7 +10,7 @@ syn region  outlineString start=+"+ end=+\v"|\n+  contains=outlineEscape
 syn match outlineSection     "^[A-Z].*$"
 
 " Syntax: TODO
-syn match outlineTodo "\v([A-Za-z-_])@<!(BUG|DEPRECATED|FIXME|IMPORTANT|TODO)([A-Za-z-_])@!"
+syn keyword outlineTodo BUG DEPRECATED FIXME IMPORTANT TODO
 
 " Syntax: question bullet point
 syn region outlineQuestion   start=+? + end=+\v\n\n@=|\n([A-Z])@=|(^\s*- )@=|(^\s*\* )@=|(^\s*! )@=|(^\s*x )@=+ contains=outlineTodo
