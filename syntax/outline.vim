@@ -4,26 +4,22 @@ if exists('b:current_syntax') && b:current_syntax == 'outline'
 endif
 
 " Syntax: Strings {{{1
-syn region  outlineString    start=+"+  skip=+\\\\\|\\"+  end=+"\|\n+  contains=outlineEscape
+syn region  outlineString start=+"+ end=+\v"|\n+  contains=outlineEscape
 
 " Syntax: Label {{{1
 syn match outlineSection     "^[A-Z].*$"
 
 " Syntax: TODO
 syn match outlineTodo "\v([A-Za-z-_])@<!(BUG|DEPRECATED|FIXME|IMPORTANT|TODO)([A-Za-z-_])@!"
-"syn match outlineTodo "\([A-Za-z-_]\)\@<!\(BUG\|DEPRECATED\|FIXME\|IMPORTANT\|TODO\)\([A-Za-z-_]\)\@!"
 
 " Syntax: Exception {{{1
 syn region outlineQuestion   start=+? + end=+\v\n\n@=|\n([A-Z])@=|(^\s*- )@=|(^\s*\* )@=|(^\s*! )@=|(^\s*x )@=+ contains=outlineTodo
-"syn region outlineQuestion   start=+? + end=+\n\n\@=\|\n\([A-Z]\)\@=\|\(^\s*- \)\@=\|\(^\s*\* \)\@=\|\(^\s*! \)\@=\|\(^\s*x \)\@=+ contains=outlineTodo
 
 " Syntax: Tag {{{1
 syn region outlineImportant  start=+! + end=+\v\n\n@=|\n([A-Z])@=|(^\s*- )@=|(^\s*\* )@=|(^\s*\? )@=|(^\s*x )@=+ contains=outlineTodo
-"syn region outlineImportant  start=+! + end=+\n\n\@=\|\n\([A-Z]\)\@=\|\(^\s*- \)\@=\|\(^\s*\* \)\@=\|\(^\s*? \)\@=\|\(^\s*x \)\@=+ contains=outlineTodo
 
 " Syntax: Tag {{{1
 syn region outlineInvalid    start=+x + end=+\v\n\n@=|\n([A-Z])@=|(^\s*- )@=|(^\s*\* )@=|(^\s*\? )@=|(^\s*! )@=+ contains=outlineTodo
-"syn region outlineInvalid    start=+x + end=+\n\n\@=\|\n\([A-Z]\)\@=\|\(^\s*- \)\@=\|\(^\s*\* \)\@=\|\(^\s*? \)\@=\|\(^\s*! \)\@=+ contains=outlineTodo
 
 " Syntax: Escape sequences
 "syn match   outlineEscape    "\\["\\/bfnrt]" contained
