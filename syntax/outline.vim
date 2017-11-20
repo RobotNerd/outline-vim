@@ -3,24 +3,23 @@ if exists('b:current_syntax') && b:current_syntax == 'outline'
   finish
 endif
 
-" Syntax: quoted strings
-syn region  outlineString start=+"+ end=+\v"|\n+  contains=outlineEscape
+" quoted strings
+syn region outlineString start=+"+ end=+\v"|\n+
 
-" Syntax: section header
-syn match outlineSection     "^[A-Z].*$"
+" section header
+syn match outlineSection "^[A-Z].*$"
 
-" Syntax: TODO
+" TODO, BUG, etc. tags
 syn keyword outlineTodo BUG DEPRECATED FIXME IMPORTANT TODO
 
-" Syntax: bullet points
+" bullet points
 syn region outlineQuestion start=+? + end=+\v\n\n@=|\n([A-Z])@=|(^\s*[-x!\*] )@=+ contains=outlineTodo
 syn region outlineImportant start=+! + end=+\v\n\n@=|\n([A-Z])@=|(^\s*[-\*\?x] )@=+ contains=outlineTodo
 syn region outlineInvalid start=+x + end=+\v\n\n@=|\n([A-Z])@=|(^\s*[-\*\?!] )@=+ contains=outlineTodo
 
-" Syntax: comment
-syn region  outlineLineComment start=+##+ end=+$+ keepend contains=outlineTodo
+" comment
+syn region outlineLineComment start=+##+ end=+$+ keepend contains=outlineTodo
 
-" Define the default highlighting.
 hi def link outlineString String
 hi def link outlineObjAssign Identifier
 hi def link outlineSection Underlined
