@@ -4,7 +4,7 @@ if exists('b:current_syntax') && b:current_syntax == 'outline'
 endif
 
 " quoted strings
-syn region outlineString start=+"+ end=+\v"|\n+
+syn region outlineString start=+"+ end=+\v"|\n\n+
 
 " section header
 syn match outlineSection "^[A-Z].*$"
