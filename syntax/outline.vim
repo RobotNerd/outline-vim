@@ -23,22 +23,33 @@ syn region outlineLineComment start=+##+ end=+$+ keepend contains=outlineTodo
 " URIs ------------
 
 " like: http://www.example.com
+" - requires leading whitespace
 syn match outlineURI "\v(\s+)@<=([A-Za-z][A-Za-z0-9+\.\-]*)?://(\w\+(:\w\+)?\@)?([A-Za-z][-_0-9A-Za-z]*\.){1,}(\w{2,}\.?){1,}(:[0-9]{1,5})?\S*"
 
 " like: //example.com/path
-syn match outlineURI "\v(\s+)@<=//[A-za-z0-9\-_/\.#]*"
+" - requires leading whitespace
+" - can be nested in () or {}
+syn match outlineURI "\v(\s+|\(|\{)@<=//[A-za-z0-9\-_/\.#]*"
 
 " like: ./path/to/file.txt
-syn match outlineURI "\v(\s+)@<=(\.{1,2})?/[A-za-z0-9\-_/\.#]+"
+" - requires leading whitespace
+" - can be nested in () or {}
+syn match outlineURI "\v(\s+|\(|\{)@<=(\.{1,2})?/[A-za-z0-9\-_/\.#]+"
 
 " email
-syn match outlineEmail "\v(\s+)@<=[A-za-z0-9_]+[A-za-z0-9\.\-_\+]*\@[A-za-z0-9\.\-_]*"
+" - requires leading whitespace
+" - can be nested in () or {}
+syn match outlineEmail "\v(\s+|\(|\{)@<=[A-za-z0-9_]+[A-za-z0-9\.\-_\+]*\@[A-za-z0-9\.\-_]*"
 
 " URN
-syn match outlineURN "\v(\s+)@<=[a|u]rn:[A-Za-z0-9\-_:/\.]+"
+" - requires leading whitespace
+" - can be nested in () or {}
+syn match outlineURN "\v(\s+|\(|\{)@<=[a|u]rn:[A-Za-z0-9\-_:/\.]+"
 
 " hashtag
-syn match outlineHashtag "\v(\s+)@<=(\@|#)[A-Za-z0-9\-_]+"
+" - requires leading whitespace
+" - can be nested in () or {}
+syn match outlineHashtag "\v(\s+|\(|\{)@<=(\@|#)[A-Za-z0-9\-_]+"
 
 hi def link outlineString String
 hi def link outlineObjAssign Identifier
