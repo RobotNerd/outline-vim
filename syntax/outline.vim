@@ -13,9 +13,9 @@ syn match outlineSection "^[A-Za-z\.].*$"
 syn keyword outlineTodo BUG DEPRECATED FIXME IMPORTANT NOTE TODO
 
 " bullet points
-syn region outlineQuestion start=+\v^\s*\? + end=+\v\n\n@=|\n([A-Z])@=|(^\s*[-x!\*] )@=+ contains=outlineTodo
-syn region outlineImportant start=+\v^\s*\! + end=+\v\n\n@=|\n([A-Z])@=|(^\s*[-\*\?x] )@=+ contains=outlineTodo
-syn region outlineInvalid start=+\v^\s*x + end=+\v\n\n@=|\n([A-Z])@=|(^\s*[-\*\?!] )@=+ contains=outlineTodo
+syn region outlineQuestion start=+\v^\s*\? + end=+\v\n\n@=|\n([A-Z])@=|(^\s*[-x!\*] )@=+ contains=outlineTodo,outlineLineComment
+syn region outlineImportant start=+\v^\s*\! + end=+\v\n\n@=|\n([A-Z])@=|(^\s*[-\*\?x] )@=+ contains=outlineTodo,outlineLineComment
+syn region outlineInvalid start=+\v^\s*x + end=+\v\n\n@=|\n([A-Z])@=|(^\s*[-\*\?!] )@=+ contains=outlineTodo,outlineLineComment
 
 " comment
 syn region outlineLineComment start=+##+ end=+$+ keepend contains=outlineTodo
