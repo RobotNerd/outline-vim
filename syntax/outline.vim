@@ -10,7 +10,9 @@ syn region outlineString start=+"+ end=+\v"|\n\n+
 syn match outlineSection "^[A-Za-z\.].*$"
 
 " TODO, BUG, etc. tags
-syn keyword outlineTodo BUG DEPRECATED FIXME IMPORTANT NOTE TODO
+" - must not be at the start of the line (it's a section header then)
+" - must not have an adjacent alphabetic or underscore
+syn match outlineTodo /\v([A-Za-z_^])@<!(.)@<=(BUG|DEPRECATED|FIXME|IMPORTANT|NOTE|TODO)([A-Za-z_])@!/
 
 " bullet points
 syn region outlineQuestion start=+\v^\s*\? + end=+\v\n\n@=|\n([A-Z])@=|(^\s*[-x!\*] )@=+ contains=outlineTodo,outlineLineComment
