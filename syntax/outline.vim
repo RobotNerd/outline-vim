@@ -7,7 +7,7 @@ endif
 syn region outlineString start=+"+ end=+\v"|\n\n+
 
 " section header
-syn match outlineSection "^[A-Za-z].*$"
+syn match outlineSection "^[A-Za-z\.].*$"
 
 " TODO, BUG, etc. tags
 syn keyword outlineTodo BUG DEPRECATED FIXME IMPORTANT NOTE TODO
