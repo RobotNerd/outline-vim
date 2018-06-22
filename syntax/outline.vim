@@ -22,6 +22,9 @@ syn region outlineInvalid start=+\v^\s*x + end=+\v\n\n@=|\n([A-Z])@=|(^\s*[-\*\?
 " comment
 syn region outlineLineComment start=+##+ end=+$+ keepend contains=outlineTodo
 
+" bracket
+syn region outlineBracket start=+\v\\@<!\[+ end=+\v\\@<!\]+ keepend contains=outlineTodo
+
 " URIs ------------
 
 " like: http://www.example.com
@@ -61,6 +64,7 @@ hi def link outlineImportant Repeat
 hi def link outlineInvalid Comment
 hi def link outlineTodo Todo
 hi def link outlineLineComment Comment
+hi def link outlineBracket Debug
 hi def link outlineURI Underlined
 hi def link outlineURN Underlined
 hi def link outlineEmail Underlined
